@@ -1,0 +1,59 @@
+.product-list {
+    padding: 20px;
+    max-width: 1200px; /* Optional: Set a max-width for better alignment */
+    margin: auto; /* Center the content */
+}
+
+h3 {
+    margin: 0; /* Remove default margin */
+    padding-bottom: 10px; /* Add some space below the heading */
+}
+
+.search-product-box {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.product-table {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.header li {
+    flex: 1;
+    padding: 10px;
+}
+
+.product-scroll {
+    max-height: 500px; /* Set the height limit for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.product-scroll ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-scroll li {
+    display: flex;
+    justify-content: space-between; /* Space out the content */
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-scroll li:last-child {
+    border-bottom: none;
+}
+
+.product-scroll button {
+    margin-right: 10px;
+}
