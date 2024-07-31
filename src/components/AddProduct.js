@@ -23,7 +23,6 @@ const AddProduct = () => {
       },
     });
     result = await result.json();
-    console.warn(result);
 
     // Clear input fields after successful product addition
     setName("");

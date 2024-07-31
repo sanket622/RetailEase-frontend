@@ -15,12 +15,10 @@ const ProductList = () => {
       },
     });
     result = await result.json();
-    console.warn("hi");
     setProducts(result);
   };
 
   const deleteProduct = async (id) => {
-    console.warn(id);
     let result = await fetch(`http://localhost:5000/product/${id}`, {
       method: "DELETE",
       headers: {

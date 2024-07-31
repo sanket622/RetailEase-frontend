@@ -18,7 +18,6 @@ const SignUp = () => {
     })
 
      const collectionData = async () => {
-        console.warn(name,email,password);
         let result =await fetch('http://localhost:5000/register',{
             method:'post',
             body: JSON.stringify({name,email,password}),
@@ -27,7 +26,6 @@ const SignUp = () => {
             }
         });
         result = await result.json();
-        console.warn(result);
         localStorage.setItem("user",JSON.stringify(result.result));  
         localStorage.setItem("token",JSON.stringify(result.auth));  
         navigate('/');
