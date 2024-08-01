@@ -16,7 +16,7 @@ const UpdateProduct = () => {
 
 
   const getProductDetails = async () => {
-    let result = await fetch(`http://localhost:5000/product/${params.id}`,{
+    let result = await fetch(`https://retailease-backend.onrender.com/product/${params.id}`,{
       headers:{
         authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
     }
@@ -29,7 +29,7 @@ const UpdateProduct = () => {
 
   }
   const updateProduct = async () => {
-       let result = await fetch(`http://localhost:5000/product/${params.id}`,{
+       let result = await fetch(`https://retailease-backend.onrender.com/product/${params.id}`,{
         method:'put',
         body:JSON.stringify({name,price,category,company}),
         headers:{
