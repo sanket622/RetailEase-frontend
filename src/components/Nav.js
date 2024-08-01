@@ -24,9 +24,6 @@ const Nav = () => {
             <Link to="/add">Add Product</Link>
           </li>
           <li>
-            <Link to="/profile">profile</Link>
-          </li>
-          <li>
             <Link onClick={logout} to="/signup">
               Logout({JSON.parse(auth).name})
             </Link>
