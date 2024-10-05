@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {debounce} from "lodash";
 import { Link } from "react-router-dom";
 
 const ProductList = () => {
@@ -9,9 +10,9 @@ const ProductList = () => {
   }, []);
 
   const getProducts = async () => {
-    let result = await fetch("https://retailease-backend.onrender.com/products", {
+    let result = await fetch("https://retail-ease-backend-qf94.vercel.app/products", {
       headers: {
-        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },
     });
     result = await result.json();
@@ -19,10 +20,10 @@ const ProductList = () => {
   };
 
   const deleteProduct = async (id) => {
-    let result = await fetch(`https://retailease-backend.onrender.com/product/${id}`, {
+    let result = await fetch(`https://retail-ease-backend-qf94.vercel.app/product/${id}`, {
       method: "DELETE",
       headers: {
-        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`, // Add authorization header
+        authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`, // Add authorization header
       },
     });
     result = await result.json();
@@ -34,12 +35,11 @@ const ProductList = () => {
     }
   };
 
-  const searchHandle = async (event) => {
-    let key = event.target.value;
+  const debouncedSearchHandle = debounce(async (key) => {
     if (key) {
-      let result = await fetch(`https://retailease-backend.onrender.com/search/${key}`, {
+      let result = await fetch(`https://retail-ease-backend-qf94.vercel.app/search/${key}`, {
         headers: {
-          authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+          authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },
       });
       result = await result.json();
@@ -49,6 +49,10 @@ const ProductList = () => {
     } else {
       getProducts();
     }
+  }, 300); // 300ms debounce delay
+  
+  const searchHandle = (event) => {
+    debouncedSearchHandle(event.target.value);
   };
 
   return (

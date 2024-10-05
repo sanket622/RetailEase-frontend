@@ -7,6 +7,7 @@ const UpdateProduct = () => {
   const [price, setPrice] = React.useState("");
   const [category, setCategory] = React.useState("");
   const [company, setCompany] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
   const params = useParams();
   const navigate = useNavigate();
 
@@ -16,9 +17,9 @@ const UpdateProduct = () => {
 
 
   const getProductDetails = async () => {
-    let result = await fetch(`https://retailease-backend.onrender.com/product/${params.id}`,{
+    let result = await fetch(`https://retail-ease-backend-qf94.vercel.app/product/${params.id}`,{
       headers:{
-        authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
+        authorization:`Bearer ${JSON.parse(localStorage.getItem("token"))}`
     }
     });
     result = await result.json();
@@ -29,6 +30,7 @@ const UpdateProduct = () => {
 
   }
   const updateProduct = async () => {
+    setLoading(true);
        let result = await fetch(`https://retailease-backend.onrender.com/product/${params.id}`,{
         method:'put',
         body:JSON.stringify({name,price,category,company}),
@@ -83,7 +85,9 @@ const UpdateProduct = () => {
           setCompany(e.target.value);
         }}
       />
-      <button onClick={updateProduct} className="appbtn">Update Product</button>
+      <button onClick={updateProduct} className="appbtn"  disabled={loading}>
+      {loading ? "Updating..." : "Update Product"}
+      </button>
     </div>
   );
 };

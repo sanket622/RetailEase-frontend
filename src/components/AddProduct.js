@@ -14,12 +14,12 @@ const AddProduct = () => {
     }
 
     const userId = JSON.parse(localStorage.getItem("user"))._id;
-    let result = await fetch("https://retailease-backend.onrender.com/add-product", {
+    let result = await fetch("https://retail-ease-backend-qf94.vercel.app/add-product", {
       method: "post",
       body: JSON.stringify({ name, price, category, company, userId }),
       headers: {
         "Content-Type": "application/json",
-        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },
     });
     result = await result.json();
