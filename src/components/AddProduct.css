@@ -1,0 +1,49 @@
+.product {
+    max-width: 100%; /* Limit width for better readability */
+    margin: auto; /* Center the form */
+    padding: 20px; /* Add padding around the form */
+    background-color: lightblue; /* Light background */
+    border-radius: 10px; /* Round the corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  }
+  
+  h1 {
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    font-size: 24px; /* Larger font size */
+  }
+  
+  .inputBox {
+    width: 90%; /* Full width input fields */
+    padding: 10px; /* Add padding inside the inputs */
+    margin-right: auto;
+    margin-bottom: 15px; /* Space between input fields */
+    font-size: 16px; /* Adjust font size */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Round the input corners */
+    box-sizing: border-box; /* Include padding in width calculation */
+  }
+  
+  .invalid-input {
+    color: red; /* Highlight errors in red */
+    font-size: 14px; /* Smaller font for error messages */
+    margin-bottom: 10px; /* Space below error messages */
+    display: block; /* Ensure the message is on a new line */
+  }
+  
+  .appbtn {
+    width: 80%; /* Full width button */
+    padding: 12px; /* Add padding for a larger clickable area */
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+    font-size: 16px; /* Adjust font size */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Round button edges */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+  }
+  
+  .appbtn:hover {
+    background-color: #218838; /* Darken button on hover */
+  }
+  

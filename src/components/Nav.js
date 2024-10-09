@@ -11,34 +11,38 @@ const Nav = () => {
   };
 
   return (
-    <div>
+    <div style={{ padding: "20px", borderBottom: "1px solid #ddd", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
       <img
-        className="logo"
+        style={{ height: "50px", width: "auto" }}
         alt="logo"
         src="https://cdn.dribbble.com/users/160383/screenshots/5656135/scott_4x.png"
       />
 
       {auth ? (
-        <ul className="nav-ul">
+        <ul style={{ listStyle: "none", display: "flex", gap: "20px", margin: 0, padding: 0 }}>
           <li>
-            <Link to="/">Products</Link>
+            <Link to="/" style={{ textDecoration: "none", color: "#333", fontWeight: "bold" }}>Products</Link>
           </li>
           <li>
-            <Link to="/add">Add Product</Link>
+            <Link to="/add" style={{ textDecoration: "none", color: "#333", fontWeight: "bold" }}>Add Product</Link>
           </li>
           <li>
-            <Link onClick={handleLogout} to="/signup">
+            <Link
+              onClick={handleLogout}
+              to="/signup"
+              style={{ textDecoration: "none", color: "#ff6347", fontWeight: "bold" }}
+            >
               Logout ({JSON.parse(auth).name})
             </Link>
           </li>
         </ul>
       ) : (
-        <ul className="nav-ul nav-right">
+        <ul style={{ listStyle: "none", display: "flex", gap: "20px", margin: 0, padding: 0 }}>
           <li>
-            <Link to="/signup">Sign Up</Link>
+            <Link to="/signup" style={{ textDecoration: "none", color: "#333", fontWeight: "bold" }}>Sign Up</Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/login" style={{ textDecoration: "none", color: "#333", fontWeight: "bold" }}>Login</Link>
           </li>
         </ul>
       )}

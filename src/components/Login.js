@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {jwtDecode} from "jwt-decode"; // Import jwt-decode correctly
+import { jwtDecode } from "jwt-decode"; // Import jwt-decode correctly
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -111,13 +111,13 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
-      <h1>Login</h1>
+    <div style={{ width: "300px", margin: "50px auto", textAlign: "center", padding: "20px", border: "1px solid #ccc", borderRadius: "10px", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)" }}>
+      <h1 style={{ marginBottom: "20px" }}>Login</h1>
 
       {/* Email Input */}
       <input
         type="text"
-        className="inputBox"
+        style={{ width: "100%", padding: "10px", marginBottom: "10px", border: "1px solid #ccc", borderRadius: "5px" }}
         placeholder="Enter Email"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
@@ -127,12 +127,12 @@ const Login = () => {
           setError("");
         }}
       />
-      {errorEmail && <div style={{ color: "red" }}>{errorEmail}</div>}
+      {errorEmail && <div style={{ color: "red", marginBottom: "10px" }}>{errorEmail}</div>}
 
       {/* Password Input */}
       <input
         type="password"
-        className="inputBox"
+        style={{ width: "100%", padding: "10px", marginBottom: "10px", border: "1px solid #ccc", borderRadius: "5px" }}
         placeholder="Enter Password"
         onChange={(e) => setPassword(e.target.value)}
         value={password}
@@ -142,12 +142,12 @@ const Login = () => {
           setError("");
         }}
       />
-      {errorPassword && <div style={{ color: "red" }}>{errorPassword}</div>}
+      {errorPassword && <div style={{ color: "red", marginBottom: "10px" }}>{errorPassword}</div>}
 
       {/* Login Button */}
       <button
         onClick={handleLogin}
-        className="appbtn"
+        style={{ width: "100%", padding: "10px", backgroundColor: "#28a745", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }}
         type="button"
         disabled={loading}
       >
@@ -155,7 +155,7 @@ const Login = () => {
       </button>
 
       {/* Error Message */}
-      {error && <div style={{ color: "red" }}>{error}</div>}
+      {error && <div style={{ color: "red", marginTop: "10px" }}>{error}</div>}
     </div>
   );
 };

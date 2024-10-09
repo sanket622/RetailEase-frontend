@@ -92,10 +92,10 @@ const SignUp = () => {
     };
 
     return (
-        <div className="register">
-            <h1>Register</h1>
+        <div style={{ maxWidth: '400px', margin: 'auto', padding: '20px', backgroundColor: '#f9f9f9', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+            <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Register</h1>
             <input
-                className="inputBox"
+                style={{ width: '100%', padding: '10px', marginBottom: '15px', borderRadius: '5px', border: '1px solid #ccc', fontSize: '16px' }}
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -103,7 +103,7 @@ const SignUp = () => {
                 placeholder="Enter Name"
             />
             <input
-                className="inputBox"
+                style={{ width: '100%', padding: '10px', marginBottom: '15px', borderRadius: '5px', border: '1px solid #ccc', fontSize: '16px' }}
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -111,9 +111,9 @@ const SignUp = () => {
                 onFocus={() => { setErrorEmail(""); setError(""); }}
                 placeholder="Enter Email"
             />
-            {errorEmail && <div style={{ color: "red" }}>{errorEmail}</div>}
+            {errorEmail && <div style={{ color: "red", marginBottom: '10px' }}>{errorEmail}</div>}
             <input
-                className="inputBox"
+                style={{ width: '100%', padding: '10px', marginBottom: '15px', borderRadius: '5px', border: '1px solid #ccc', fontSize: '16px' }}
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -121,16 +121,16 @@ const SignUp = () => {
                 onFocus={() => { setErrorPassword(""); setError(""); }}
                 placeholder="Enter Password"
             />
-            {errorPassword && <div style={{ color: "red" }}>{errorPassword}</div>}
+            {errorPassword && <div style={{ color: "red", marginBottom: '10px' }}>{errorPassword}</div>}
             <button
-                className="appbtn"
+                style={{ width: '100%', padding: '12px', backgroundColor: '#28a745', color: 'white', fontSize: '16px', border: 'none', borderRadius: '5px', cursor: 'pointer', transition: 'background-color 0.3s ease' }}
                 onClick={collectionData}
                 type="button"
                 disabled={loading}
             >
                 {loading ? "Registering..." : "Sign Up"}
             </button>
-            {error && <div style={{ color: "red" }}>{error}</div>}
+            {error && <div style={{ color: "red", marginTop: '10px' }}>{error}</div>}
         </div>
     );
 };
