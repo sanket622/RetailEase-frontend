@@ -73,6 +73,7 @@ const ProductList = () => {
         padding: "20px",
         maxWidth: "1200px",
         margin: "auto",
+        overflowX: "hidden", // Hide horizontal overflow
       }}
     >
       <h3
@@ -106,13 +107,14 @@ const ProductList = () => {
           backgroundColor: "lightblue",
           fontWeight: "bold",
           borderBottom: "2px solid #ccc",
+          flexWrap: "wrap", // Allow wrapping on small screens
         }}
       >
-        <li style={{ flex: 1 }}>S. No</li>
-        <li style={{ flex: 3 }}>Name</li>
-        <li style={{ flex: 2 }}>Price</li>
-        <li style={{ flex: 3 }}>Category</li>
-        <li style={{ flex: 2 }}>Operation</li>
+        <li style={{ flex: 1, minWidth: "50px" }}>S. No</li>
+        <li style={{ flex: 3, minWidth: "120px" }}>Name</li>
+        <li style={{ flex: 2, minWidth: "80px" }}>Price</li>
+        <li style={{ flex: 3, minWidth: "100px" }}>Category</li>
+        <li style={{ flex: 2, minWidth: "100px" }}>Operation</li>
       </ul>
       {products.length > 0 ? (
         products.map((item, index) => (
@@ -127,16 +129,17 @@ const ProductList = () => {
               flexWrap: "wrap",
             }}
           >
-            <li style={{ flex: 1 }}>{index + 1}</li>
-            <li style={{ flex: 3 }}>{item.name}</li>
-            <li style={{ flex: 2 }}>Rs{item.price}</li>
-            <li style={{ flex: 3 }}>{item.category}</li>
-            <li style={{ flex: 2 }}>
+            <li style={{ flex: 1, minWidth: "50px" }}>{index + 1}</li>
+            <li style={{ flex: 3, minWidth: "120px" }}>{item.name}</li>
+            <li style={{ flex: 2, minWidth: "80px" }}>Rs{item.price}</li>
+            <li style={{ flex: 3, minWidth: "100px" }}>{item.category}</li>
+            <li style={{ flex: 2, minWidth: "100px" }}>
               <button
                 onClick={() => deleteProduct(item._id)}
                 style={{
                   padding: "5px 10px",
                   marginRight: "10px",
+                  marginBottom:"1px",
                   backgroundColor: "red",
                   color: "#fff",
                   border: "none",
