@@ -92,10 +92,10 @@ const SignUp = () => {
     };
 
     return (
-        <div style={{ maxWidth: '400px', margin: 'auto', padding: '20px', backgroundColor: '#f9f9f9', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+        <div style={{ maxWidth: '400px', margin: 'auto', padding: '20px', backgroundColor: "lightblue", borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
             <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Register</h1>
             <input
-                style={{ width: '100%', padding: '10px', marginBottom: '15px', borderRadius: '5px', border: '1px solid #ccc', fontSize: '16px' }}
+                style={{ width: '90%', padding: '10px', marginBottom: '15px', borderRadius: '5px', border: '1px solid #ccc', fontSize: '16px' }}
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -103,7 +103,7 @@ const SignUp = () => {
                 placeholder="Enter Name"
             />
             <input
-                style={{ width: '100%', padding: '10px', marginBottom: '15px', borderRadius: '5px', border: '1px solid #ccc', fontSize: '16px' }}
+                style={{ width: '90%', padding: '10px', marginBottom: '15px', borderRadius: '5px', border: '1px solid #ccc', fontSize: '16px' }}
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -113,7 +113,7 @@ const SignUp = () => {
             />
             {errorEmail && <div style={{ color: "red", marginBottom: '10px' }}>{errorEmail}</div>}
             <input
-                style={{ width: '100%', padding: '10px', marginBottom: '15px', borderRadius: '5px', border: '1px solid #ccc', fontSize: '16px' }}
+                style={{ width: '90%', padding: '10px', marginBottom: '15px', borderRadius: '5px', border: '1px solid #ccc', fontSize: '16px' }}
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -123,7 +123,7 @@ const SignUp = () => {
             />
             {errorPassword && <div style={{ color: "red", marginBottom: '10px' }}>{errorPassword}</div>}
             <button
-                style={{ width: '100%', padding: '12px', backgroundColor: '#28a745', color: 'white', fontSize: '16px', border: 'none', borderRadius: '5px', cursor: 'pointer', transition: 'background-color 0.3s ease' }}
+                style={{ width: '90%', padding: '12px', backgroundColor: '#28a745', color: 'white', fontSize: '16px', border: 'none', borderRadius: '5px', cursor: 'pointer', transition: 'background-color 0.3s ease' }}
                 onClick={collectionData}
                 type="button"
                 disabled={loading}

@@ -111,13 +111,13 @@ const Login = () => {
   };
 
   return (
-    <div style={{ width: "300px", margin: "50px auto", textAlign: "center", padding: "20px", border: "1px solid #ccc", borderRadius: "10px", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)" }}>
+    <div style={{ width: "400px", margin: "50px auto", textAlign: "center" , padding: "20px" , backgroundColor: "lightblue", border: "1px solid #ccc", borderRadius: "10px", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)" }}>
       <h1 style={{ marginBottom: "20px" }}>Login</h1>
 
       {/* Email Input */}
       <input
         type="text"
-        style={{ width: "100%", padding: "10px", marginBottom: "10px", border: "1px solid #ccc", borderRadius: "5px" }}
+        style={{ width: "90%", padding: "10px", marginBottom: "10px", border: "1px solid #ccc", borderRadius: "5px" }}
         placeholder="Enter Email"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
@@ -132,7 +132,7 @@ const Login = () => {
       {/* Password Input */}
       <input
         type="password"
-        style={{ width: "100%", padding: "10px", marginBottom: "10px", border: "1px solid #ccc", borderRadius: "5px" }}
+        style={{ width: "90%", padding: "10px", marginBottom: "10px", border: "1px solid #ccc", borderRadius: "5px" }}
         placeholder="Enter Password"
         onChange={(e) => setPassword(e.target.value)}
         value={password}
@@ -147,7 +147,7 @@ const Login = () => {
       {/* Login Button */}
       <button
         onClick={handleLogin}
-        style={{ width: "100%", padding: "10px", backgroundColor: "#28a745", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }}
+        style={{ width: "90%", padding: "10px", backgroundColor: "#28a745", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }}
         type="button"
         disabled={loading}
       >
