@@ -9,12 +9,13 @@ const Login = () => {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   // Check token on initial render and redirect if token is valid
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
-    
+
     if (token) {
       try {
         const decodedToken = jwtDecode(token);
@@ -44,20 +45,21 @@ const Login = () => {
 
   // Password validation (at least one upper case, lower case, number, special character, and 8 chars)
   const validatePassword = (password) => {
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+    const regex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
     return regex.test(password);
   };
 
   // Handle email validation on blur
   const handleEmailBlur = () => {
-    if (!validateEmail(email)) {
+    if (email && !validateEmail(email)) {
       setErrorEmail("Invalid email format!");
     }
   };
 
   // Handle password validation on blur
   const handlePasswordBlur = () => {
-    if (!validatePassword(password)) {
+    if (password && !validatePassword(password)) {
       setErrorPassword(
         "Password must have at least 8 characters, including upper, lower, number, and special character."
       );
@@ -85,15 +87,18 @@ const Login = () => {
     }
 
     setLoading(true);
-    
+
     // Make login request to backend
-    let result = await fetch("https://retail-ease-backend-qf94.vercel.app/login", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    let result = await fetch(
+      "https://retail-ease-backend-qf94.vercel.app/login",
+      {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     result = await result.json();
     setLoading(false);
@@ -111,13 +116,30 @@ const Login = () => {
   };
 
   return (
-    <div style={{ width: "400px", margin: "50px auto", textAlign: "center" , padding: "20px" , backgroundColor: "lightblue", border: "1px solid #ccc", borderRadius: "10px", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)" }}>
+    <div
+      style={{
+        width: "400px",
+        margin: "50px auto",
+        textAlign: "center",
+        padding: "20px",
+        backgroundColor: "lightblue",
+        border: "1px solid #ccc",
+        borderRadius: "10px",
+        boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
+      }}
+    >
       <h1 style={{ marginBottom: "20px" }}>Login</h1>
 
       {/* Email Input */}
       <input
         type="text"
-        style={{ width: "90%", padding: "10px", marginBottom: "10px", border: "1px solid #ccc", borderRadius: "5px" }}
+        style={{
+          width: "90%",
+          padding: "10px",
+          marginBottom: "10px",
+          border: "1px solid #ccc",
+          borderRadius: "5px",
+        }}
         placeholder="Enter Email"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
@@ -127,12 +149,20 @@ const Login = () => {
           setError("");
         }}
       />
-      {errorEmail && <div style={{ color: "red", marginBottom: "10px" }}>{errorEmail}</div>}
+      {errorEmail && (
+        <div style={{ color: "red", marginBottom: "10px" }}>{errorEmail}</div>
+      )}
 
       {/* Password Input */}
       <input
-        type="password"
-        style={{ width: "90%", padding: "10px", marginBottom: "10px", border: "1px solid #ccc", borderRadius: "5px" }}
+        type={showPassword ? "text" : "password"}
+        style={{
+          width: "90%",
+          padding: "10px",
+          marginBottom: "10px",
+          border: "1px solid #ccc",
+          borderRadius: "5px",
+        }}
         placeholder="Enter Password"
         onChange={(e) => setPassword(e.target.value)}
         value={password}
@@ -142,12 +172,44 @@ const Login = () => {
           setError("");
         }}
       />
-      {errorPassword && <div style={{ color: "red", marginBottom: "10px" }}>{errorPassword}</div>}
-
-      {/* Login Button */}
+      {errorPassword && (
+        <div style={{ color: "red", marginBottom: "10px" }}>
+          {errorPassword}
+        </div>
+      )}
+      <div
+        style={{
+          marginLeft: "8px",
+          marginBottom: "15px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <input
+          type="checkbox"
+          id="showPassword"
+          checked={showPassword}
+          onChange={() => setShowPassword(!showPassword)}
+          style={{ width: "20px", height: "20px" }}
+        />
+        <label
+          htmlFor="showPassword"
+          style={{ marginLeft: "10px", fontSize: "16px" }}
+        >
+          Show Password
+        </label>
+      </div>
       <button
         onClick={handleLogin}
-        style={{ width: "90%", padding: "10px", backgroundColor: "#28a745", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }}
+        style={{
+          width: "90%",
+          padding: "10px",
+          backgroundColor: "#28a745",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
         type="button"
         disabled={loading}
       >

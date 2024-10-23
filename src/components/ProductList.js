@@ -23,21 +23,25 @@ const ProductList = () => {
   };
 
   const deleteProduct = async (id) => {
-    let result = await fetch(
-      `https://retail-ease-backend-qf94.vercel.app/product/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        },
+    if (window.confirm("Are you sure you want to delete this movie?")) {
+      let result = await fetch(
+        `https://retail-ease-backend-qf94.vercel.app/product/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      );
+      result = await result.json();
+      if (result.deletedCount > 0) {
+        alert("Product deleted successfully!");
+        getProducts();
+      } else {
+        alert("Failed to delete product");
       }
-    );
-    result = await result.json();
-    if (result.deletedCount > 0) {
-      alert("Product deleted successfully!");
-      getProducts();
-    } else {
-      alert("Failed to delete product");
     }
   };
 
@@ -139,7 +143,7 @@ const ProductList = () => {
                 style={{
                   padding: "5px 10px",
                   marginRight: "10px",
-                  marginBottom:"1px",
+                  marginBottom: "1px",
                   backgroundColor: "red",
                   color: "#fff",
                   border: "none",
