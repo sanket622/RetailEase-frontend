@@ -23,7 +23,7 @@ const ProductList = () => {
   };
 
   const deleteProduct = async (id) => {
-    if (window.confirm("Are you sure you want to delete this movie?")) {
+    if (window.confirm("Are you sure you want to delete this Product?")) {
       let result = await fetch(
         `https://retail-ease-backend-qf94.vercel.app/product/${id}`,
         {

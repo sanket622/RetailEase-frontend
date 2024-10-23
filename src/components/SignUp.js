@@ -20,9 +20,8 @@ const SignUp = () => {
         const decodedToken = jwtDecode(token);
         const currentTime = Date.now() / 1000;
 
-        // If token is still valid, redirect to home
         if (decodedToken.exp > currentTime) {
-          navigate("/"); // Stay on the current page if logged in
+          navigate("/");
         }
       } catch (error) {
         console.error("Error decoding token:", error);

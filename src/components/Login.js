@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode"; // Import jwt-decode correctly
+import { jwtDecode } from "jwt-decode";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,8 +11,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-
-  // Check token on initial render and redirect if token is valid
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
 
@@ -20,12 +18,9 @@ const Login = () => {
       try {
         const decodedToken = jwtDecode(token);
         const currentTime = Date.now() / 1000;
-
-        // If token is valid, stay on home page
         if (decodedToken.exp > currentTime) {
-          navigate("/"); // Redirect to homepage if logged in
+          navigate("/");
         } else {
-          // Token expired, remove it
           localStorage.removeItem("token");
           localStorage.removeItem("user");
         }
@@ -37,27 +32,23 @@ const Login = () => {
     }
   }, [navigate]);
 
-  // Email validation
   const validateEmail = (email) => {
     const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     return regex.test(email);
   };
 
-  // Password validation (at least one upper case, lower case, number, special character, and 8 chars)
   const validatePassword = (password) => {
     const regex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
     return regex.test(password);
   };
 
-  // Handle email validation on blur
   const handleEmailBlur = () => {
     if (email && !validateEmail(email)) {
       setErrorEmail("Invalid email format!");
     }
   };
 
-  // Handle password validation on blur
   const handlePasswordBlur = () => {
     if (password && !validatePassword(password)) {
       setErrorPassword(
@@ -66,9 +57,7 @@ const Login = () => {
     }
   };
 
-  // Handle login request
   const handleLogin = async () => {
-    // Validate if all fields are filled and correctly formatted
     if (!email || !password) {
       setError("Please fill in all fields.");
       return;
@@ -88,7 +77,6 @@ const Login = () => {
 
     setLoading(true);
 
-    // Make login request to backend
     let result = await fetch(
       "https://retail-ease-backend-qf94.vercel.app/login",
       {
@@ -104,11 +92,8 @@ const Login = () => {
     setLoading(false);
 
     if (result.auth) {
-      // Store token and user data in localStorage
       localStorage.setItem("user", JSON.stringify(result.user));
       localStorage.setItem("token", JSON.stringify(result.auth));
-
-      // Redirect to homepage after successful login
       navigate("/");
     } else {
       setError("Invalid email or password.");
@@ -152,8 +137,6 @@ const Login = () => {
       {errorEmail && (
         <div style={{ color: "red", marginBottom: "10px" }}>{errorEmail}</div>
       )}
-
-      {/* Password Input */}
       <input
         type={showPassword ? "text" : "password"}
         style={{
@@ -215,8 +198,6 @@ const Login = () => {
       >
         {loading ? "Logging in..." : "Login"}
       </button>
-
-      {/* Error Message */}
       {error && <div style={{ color: "red", marginTop: "10px" }}>{error}</div>}
     </div>
   );
