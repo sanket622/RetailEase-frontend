@@ -1,4 +1,5 @@
 DEPLOYMENT LINK -->  https://retail-ease-frontend.vercel.app/
+Backend GitHub Code = https://github.com/sanket622/RetailEase-backend
 
 - App will take some minutes to upload the data(Please Be Patient).
 # Getting Started with Create React App
